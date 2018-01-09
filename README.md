@@ -1,2 +1,2 @@
 # eem
-Evil Encryptor Machine - Basic AES Encryption in Java using Secure Coding
+Evil Encryptor Machine - Basic AES File Encryption in Java using Secure Coding
