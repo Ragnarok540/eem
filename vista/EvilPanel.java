@@ -2,8 +2,8 @@ package vista;
 
 import java.io.*;
 import javax.swing.*;
-import modelo.*;
 import java.awt.event.*;
+import modelo.*;
 
 /**
  *
@@ -82,7 +82,7 @@ public class EvilPanel extends JFrame {
 										.addComponent(bSave, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 										.addComponent(bChoose, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 										.addContainerGap())
-		);
+				);
 		jPanel1Layout.setVerticalGroup(
 				jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
 				.addGroup(jPanel1Layout.createSequentialGroup()
@@ -95,7 +95,7 @@ public class EvilPanel extends JFrame {
 										.addComponent(tfSave, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 										.addComponent(bSave))
 										.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-		);
+				);
 
 		lClave.setText("Clave:");
 
@@ -109,7 +109,7 @@ public class EvilPanel extends JFrame {
 								.addComponent(lClave)
 								.addComponent(pfClave, GroupLayout.PREFERRED_SIZE, 153, GroupLayout.PREFERRED_SIZE))
 								.addContainerGap(22, Short.MAX_VALUE))
-		);
+				);
 		jPanel2Layout.setVerticalGroup(
 				jPanel2Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
 				.addGroup(jPanel2Layout.createSequentialGroup()
@@ -118,12 +118,12 @@ public class EvilPanel extends JFrame {
 						.addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
 						.addComponent(pfClave, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 						.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-		);
+				);
 
 		rbCrypt.setText("Encriptar");
 		rbDecrypt.setText("Desencriptar");
 		bAceptar.setText("Aceptar");
-		
+
 		bAceptar.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent evt) {
 				bAceptarMouseClicked(evt);
@@ -143,7 +143,7 @@ public class EvilPanel extends JFrame {
 										.addGap(8, 8, 8)
 										.addComponent(bAceptar)))
 										.addContainerGap(56, Short.MAX_VALUE))
-		);
+				);
 		jPanel3Layout.setVerticalGroup(
 				jPanel3Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
 				.addGroup(GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
@@ -154,7 +154,7 @@ public class EvilPanel extends JFrame {
 						.addGap(18, 18, 18)
 						.addComponent(bAceptar)
 						.addContainerGap(28, Short.MAX_VALUE))
-		);
+				);
 
 		lTitulo.setText("EVIL ENCRYPTOR MACHINE");
 
@@ -175,7 +175,7 @@ public class EvilPanel extends JFrame {
 												.addGap(128, 128, 128)
 												.addComponent(lTitulo)
 												.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-		);
+				);
 		layout.setVerticalGroup(
 				layout.createParallelGroup(GroupLayout.Alignment.LEADING)
 				.addGroup(layout.createSequentialGroup()
@@ -188,7 +188,7 @@ public class EvilPanel extends JFrame {
 								.addComponent(jPanel2, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 								.addComponent(jPanel3, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 								.addContainerGap())
-		);
+				);
 		pack();
 	}
 
@@ -228,15 +228,15 @@ public class EvilPanel extends JFrame {
 		String pathFileOpen = tfChoose.getText();
 		if (!new File(pathFileOpen).exists()) {
 			JOptionPane.showMessageDialog(this, pathFileOpen +
-				"\nNo se encuentra el archivo.\n" +
-				"Asegúrese de haber dado el nombre de archivo correcto.");
+					"\nNo se encuentra el archivo.\n" +
+					"Asegúrese de haber dado el nombre de archivo correcto.");
 			return;
 		}
 		//Aqui se extrae la ruta del savefilechooser
 		String pathFileSave = tfSave.getText();
 		if (!new File(pathFileSave).isAbsolute()) {
 			JOptionPane.showMessageDialog(this, pathFileSave +
-				"\nNo es una ruta válida.");
+					"\nNo es una ruta válida.");
 			return;
 		}
 		//Aqui se extrae la clave
@@ -250,25 +250,25 @@ public class EvilPanel extends JFrame {
 			AESEncrypter.encryptFile(pathFileOpen, pathFileSave, new String(key));
 			JOptionPane.showMessageDialog(this, "El archivo ha sido encriptado.");
 		} else if(rbDecrypt.isSelected()) {
-				//DESENCRIPTAR
+			//DESENCRIPTAR
 			byte[] sha1e = null;
 			byte[] sha1o = null;
-				try {
-					sha1e = AESDecrypter.decryptFile(pathFileOpen, pathFileSave, new String(key));
-				} catch (NotEncryptedException e) {
-					JOptionPane.showMessageDialog(this, pathFileOpen+
-							"\nNo es un archivo encriptado.\n" +
-							"Asegúrese de haber dado el nombre de archivo correcto.");
-						return;
-				}
-				sha1o = Utils.SHA1(pathFileSave);
-				String expected = Utils.bytesToHex(sha1e);
-				String observed = Utils.bytesToHex(sha1o);
-				JOptionPane.showMessageDialog(this, "El archivo ha sido desencriptado." +
-						"\nSHA1 esperado: " + expected +
-						"\nSHA1 obtenido: " + observed + "\n" +
-						(expected.equals(observed)?"Se ha comprobado la integridad del archivo.":"No se ha comprobado la integridad del archivo."));
+			try {
+				sha1e = AESDecrypter.decryptFile(pathFileOpen, pathFileSave, new String(key));
+			} catch (NotEncryptedException e) {
+				JOptionPane.showMessageDialog(this, pathFileOpen+
+						"\nNo es un archivo encriptado.\n" +
+						"Asegúrese de haber dado el nombre de archivo correcto.");
+				return;
 			}
+			sha1o = Utils.SHA1(pathFileSave);
+			String expected = Utils.bytesToHex(sha1e);
+			String observed = Utils.bytesToHex(sha1o);
+			JOptionPane.showMessageDialog(this, "El archivo ha sido desencriptado." +
+					"\nSHA1 esperado: " + expected +
+					"\nSHA1 obtenido: " + observed + "\n" +
+					(expected.equals(observed)?"Se ha comprobado la integridad del archivo.":"No se ha comprobado la integridad del archivo."));
+		}
 		key = null;
 		tfChoose.setText("");
 		tfSave.setText("");

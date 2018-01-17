@@ -1,20 +1,7 @@
-/*
- * Copyright 2012 NovaSoft.
- *
- * Licensed under the zlib License, Version 1.2.7 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://zlib.net/zlib_license.html
- * 
- * Edgar Nova
- * ragnarok540@gmail.com
- * 
- */
-
 package modelo;
 
 import java.io.*;
+
 import javax.crypto.*;
 
 public class AESEncrypter {
@@ -48,10 +35,15 @@ public class AESEncrypter {
 			while ((numRead = in.read(buf)) >= 0) {
 				out.write(buf, 0, numRead);
 			}
-			out.close();
 		}
 		catch (IOException e) {
 			e.printStackTrace();
+		} finally {
+			try {
+				out.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 	

@@ -1,27 +1,16 @@
-/*
- * Copyright 2012 NovaSoft.
- *
- * Licensed under the zlib License, Version 1.2.7 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://zlib.net/zlib_license.html
- * 
- * Edgar Nova
- * ragnarok540@gmail.com
- * 
- */
-
 package modelo;
 
 import java.io.*;
 import java.security.*;
 import java.security.spec.*;
+
 import javax.crypto.*;
 import javax.crypto.interfaces.*;
 import javax.crypto.spec.*;
 
 public class Utils {
+	
+	private final static byte[] MAGIC = new byte[] { 0x06, 0x06, 0x06, 0x06 };
 
 	/**
 	 * Genera un Cipher.
@@ -124,7 +113,7 @@ public class Utils {
 			fis = new FileInputStream(path);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
-		}
+		} 
 		byte[] dataBytes = new byte[1024];
 		int nread = 0; 
 		try {
@@ -133,6 +122,12 @@ public class Utils {
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
+		} finally {
+			try {
+				fis.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}
 		byte[] mdbytes = md.digest();
 		return mdbytes;
@@ -182,5 +177,9 @@ public class Utils {
 			return buffer;
 		}
 	}
+	
+	public static boolean checkMagic(byte[] magic) {
+		return bytesToHex(magic).equals(bytesToHex(MAGIC));
+	} 
 
 }

@@ -1,22 +1,10 @@
-/*
- * Copyright 2012 NovaSoft.
- *
- * Licensed under the zlib License, Version 1.2.7 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://zlib.net/zlib_license.html
- * 
- * Edgar Nova
- * ragnarok540@gmail.com
- * 
- */
-
 package modelo;
 
 import java.io.*;
+
 import javax.crypto.*;
 import javax.crypto.spec.*;
+
 import java.util.*;
 
 public class AESDecrypter {
@@ -40,7 +28,7 @@ public class AESDecrypter {
 		try {
 			in.read(buf, 0, 4);
 			byte[] magic = Arrays.copyOf(buf, 4);
-			if (!Utils.bytesToHex(magic).equals(Utils.bytesToHex(new byte[] { 0x06, 0x06, 0x06, 0x06 }))) throw new NotEncryptedException();
+			if (!Utils.checkMagic(magic)) throw new NotEncryptedException();
 			in.read(buf, 0, 16);
 			byte[] iv = Arrays.copyOf(buf, 16);
 			in.read(buf, 0, 16);
@@ -55,10 +43,15 @@ public class AESDecrypter {
 			while ((numRead = in.read(buf)) >= 0) {
 				out.write(buf, 0, numRead);
 			}
-			out.close();
 		}
 		catch (IOException e) {
 			e.printStackTrace();
+		} finally {
+			try {
+				out.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}
 		return sha1;
 	}
