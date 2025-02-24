@@ -25,7 +25,7 @@ public class AESDecrypter {
      * @return         Hash SHA-1 que estaba guardado junto con el archivo encriptado
      * @throws NotEncryptedException Si el archivo de entrada no esta encriptado (Cuando no cominenza con 0x06060606)
      * */
-    private static byte[] decryptFile(final InputStream in,
+    private static byte[] decryptFile(InputStream in,
                                       final OutputStream out,
                                       final String password) throws NotEncryptedException {
         byte[] buf = new byte[1024];

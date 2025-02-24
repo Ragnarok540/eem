@@ -24,7 +24,7 @@ public class AESEncrypter {
      * @param password Contrasena usuada para generar la clave
      * */
     private static void encryptFile(final InputStream in,
-                                    final OutputStream out,
+                                    OutputStream out,
                                     final byte[] sha1,
                                     final String password) {
         byte[] buf = new byte[1024];

@@ -7,10 +7,10 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 
-public final class File {
+public final class PlainFile {
     private String path;
 
-    public File(final String path) {
+    public PlainFile(final String path) {
         this.path = path;
     }
 
