@@ -12,13 +12,13 @@ public class AESDecrypter {
 	/**
 	 * Desencripta un archivo.
 	 * 
-	 * Este método se encarga de desencriptar un archivo
-	 * usando una contraseña. Si la contraseña es correcta
+	 * Este metodo se encarga de desencriptar un archivo
+	 * usando una contrasena. Si la contrasena es correcta
 	 * el resultado es el archivo original.
 	 * 
 	 * @param in       Archivo de entrada
 	 * @param out      Archivo de salida
-	 * @param password Contraseña usada para generar la clave
+	 * @param password Contrasena usada para generar la clave
 	 * @return         Hash SHA-1 que estaba guardado junto con el archivo encriptado
 	 * @throws NotEncryptedException Si el archivo de entrada no esta encriptado (Cuando no cominenza con 0x06060606)
 	 * */
@@ -63,7 +63,7 @@ public class AESDecrypter {
 	 * 
 	 * @param in       Path del archivo de entrada
 	 * @param out      Path del archivo de salida
-	 * @param password Contraseña usada para generar la clave
+	 * @param password Contrasena usada para generar la clave
 	 * @return         Hash SHA-1 que estaba guardado junto con el archivo encriptado
 	 * @throws NotEncryptedException Si el archivo de entrada no esta encriptado (Cuando no cominenza con 0x06060606)
 	 * */

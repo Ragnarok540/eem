@@ -9,15 +9,15 @@ public class AESEncrypter {
 	/**
 	 * Encripta un archivo.
 	 * 
-	 * Este método se encarga de encriptar un archivo
-	 * usando una contraseña. El archivo encriptado incluye
+	 * Este metodo se encarga de encriptar un archivo
+	 * usando una contrasena. El archivo encriptado incluye
 	 * un identificador, el vector de inicializacion, la
-	 * sal criptográfica, asi como los datos encriptados.
+	 * sal criptografica, asi como los datos encriptados.
 	 * 
 	 * @param in       Archivo de entrada
 	 * @param out      Archivo de salida
 	 * @param sha1     Hash SHA-1 del archivo original
-	 * @param password Contraseña usuada para generar la clave
+	 * @param password Contraseï¿½a usuada para generar la clave
 	 * */
 	private static void encryptFile(InputStream in, OutputStream out, byte[] sha1, String password) {
 		byte[] buf = new byte[1024];
@@ -54,7 +54,7 @@ public class AESEncrypter {
 	 * 
 	 * @param in       Path del archivo de entrada
 	 * @param out      Path del archivo de salida
-	 * @param password Contraseña usuada para generar la clave
+	 * @param password Contrasena usuada para generar la clave
 	 * */
 	public static void encryptFile(String in, String out, String password) {
 		byte[] sha1 = Utils.SHA1(in);

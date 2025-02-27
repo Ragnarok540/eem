@@ -15,13 +15,13 @@ public class Utils {
 	/**
 	 * Genera un Cipher.
 	 * 
-	 * Este método toma como parametros un SecretKey, 
+	 * Este metodo toma como parametros un SecretKey, 
 	 * un modo y un IvParameterSpec para crear un
 	 * Cipher para el algoritmo AES, en modo CBC.
 	 * 
 	 * @param modo Indica si debe encriptar (true) o si debe desencriptar (false)
 	 * @param sk   SecretKey generado con un password y una sal
-	 * @param ips  Especifica el vector de inicialización. Debe ser null si el modo es encriptar.
+	 * @param ips  Especifica el vector de inicializacion. Debe ser null si el modo es encriptar.
 	 * @return     El Cipher
 	 * */
 	public static Cipher getCipherAES(boolean modo, SecretKey sk, IvParameterSpec ips) {
@@ -47,12 +47,12 @@ public class Utils {
 	/**
 	 * Genera un SecretKey con el algoritmo AES a 128 bits.
 	 * 
-	 * Este método toma como parámetros un password o 
-	 * passphrase junto con una sal criptográfica y genera un
+	 * Este metodo toma como parametros un password o 
+	 * passphrase junto con una sal criptografica y genera un
 	 * SecretKey de manera segura.
 	 * 
 	 * @param pw   Password o passphrase
-	 * @param salt Sal criptográfica
+	 * @param salt Sal criptografica
 	 * @return     El SecretKey
 	 * */
 	public static SecretKey getSecretKeyAES128(String pw, byte[] salt) {
@@ -74,13 +74,13 @@ public class Utils {
 	}
 
 	/**
-	 * Genera una sal criptográfica.
+	 * Genera una sal criptografica.
 	 * 
-	 * Este método utiliza la clase SecureRandom para generar
+	 * Este metodo utiliza la clase SecureRandom para generar
 	 * una sal de manera segura. La longitud de la sal es de 
 	 * 16 bits. Ver <a href="http://en.wikipedia.org/wiki/Salt_%28cryptography%29">Salt (cryptography)</a>.
 	 * 
-	 * @return La sal criptográfica
+	 * @return La sal criptografica
 	 * */
 	public static byte[] getSalt() {
 		SecureRandom rand = null;
@@ -134,7 +134,7 @@ public class Utils {
 	}
 
 	/**
-	 * Método para convertir un arreglo de bytes en su representacion
+	 * Metodo para convertir un arreglo de bytes en su representacion
 	 * hexadecimal en una cadena.
 	 * 
 	 * @param data El arreglo de bytes
@@ -157,7 +157,7 @@ public class Utils {
 	}
 
 	/**
-	 * Método para convertir una cadena hexadecimal en su representacion
+	 * Metodo para convertir una cadena hexadecimal en su representacion
 	 * en arreglo de bytes
 	 * 
 	 * @param str La cadena 

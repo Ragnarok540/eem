@@ -5,6 +5,6 @@ mvn checkstyle:check
 
 mvn package
 
-java -cp target/eem-1.0-SNAPSHOT.jar control.Ejecutale
+java -cp target/eem-1.0-SNAPSHOT.jar control.Main
 
 mvn javadoc:javadoc
